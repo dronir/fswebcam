@@ -68,12 +68,13 @@ v4l2_palette_t v4l2_palette[] = {
 	{ SRC_PAL_BAYER,   V4L2_PIX_FMT_SBGGR8 },
 	{ SRC_PAL_SBGGR8,  V4L2_PIX_FMT_SBGGR8 },
 	{ SRC_PAL_SRGGB8,  V4L2_PIX_FMT_SRGGB8 },
-	{ SRC_PAL_SGBRG8,  V4L2_PIX_FMT_SGBRG8 },
+	{ SRC_PAL_SGBRG8,  V4L2_PIX_FMT_SBGGR8 },
 	{ SRC_PAL_SGRBG8,  V4L2_PIX_FMT_SGRBG8 },
 	{ SRC_PAL_RGB565,  V4L2_PIX_FMT_RGB565 },
 	{ SRC_PAL_RGB555,  V4L2_PIX_FMT_RGB555 },
 	{ SRC_PAL_Y16,     V4L2_PIX_FMT_Y16    },
 	{ SRC_PAL_GREY,    V4L2_PIX_FMT_GREY   },
+        { SRC_PAL_HAX,         V4L2_PIX_FMT_SGBRG8 },
 	{ 0, 0 }
 };
 
@@ -570,7 +571,8 @@ int src_v4l2_set_pix_format(src_t *src)
 		s->fmt.fmt.pix.field       = V4L2_FIELD_ANY;
 		
 		if(ioctl(s->fd, VIDIOC_TRY_FMT, &s->fmt) != -1 &&
-		   s->fmt.fmt.pix.pixelformat == v4l2_palette[v4l2_pal].v4l2)
+		   (s->fmt.fmt.pix.pixelformat == v4l2_palette[v4l2_pal].v4l2
+                    || v4l2_palette[v4l2_pal].src == SRC_PAL_HAX))
 		{
 			src->palette = v4l2_palette[v4l2_pal].src;
 			

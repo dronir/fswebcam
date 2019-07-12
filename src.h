@@ -42,6 +42,7 @@
 #define SRC_PAL_RGB555  (19)
 #define SRC_PAL_Y16     (20)
 #define SRC_PAL_GREY    (21)
+#define SRC_PAL_HAX         (22)
 
 #define SRC_LIST_INPUTS     (1 << 1)
 #define SRC_LIST_TUNERS     (1 << 2)

@@ -648,6 +648,8 @@ int fswc_grab(fswebcam_config_t *config)
 			}
 		}
 		
+		if (src.palette == SRC_PAL_HAX) {src.palette = SRC_PAL_SGBRG8;}
+
 		/* Add frame to the average bitmap. */
 		switch(src.palette)
 		{

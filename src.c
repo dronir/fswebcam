@@ -68,6 +68,7 @@ src_palette_t src_palette[] = {
 	{ "RGB555" },
 	{ "Y16" },
 	{ "GREY" },
+        { "HAX" },
 	{ NULL }
 };
 
